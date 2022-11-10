@@ -6,7 +6,7 @@ const NavbarContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  width: 100vw;
+  width: 100%;
   background-color: #40474f;
   padding: 1.5rem 0 1.5rem 0;
   gap: 2rem;
@@ -35,7 +35,7 @@ const LinksContainer = styled.div`
 `;
 
 const ColorGeneratorButton = styled.button`
-  width: 9rem;
+  width: 10rem;
   height: 2.5rem;
   border-radius: 1rem;
   background-color: #d68f24;

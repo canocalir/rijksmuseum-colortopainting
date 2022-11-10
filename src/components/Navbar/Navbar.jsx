@@ -14,7 +14,7 @@ const Navbar = () => {
       <LinkStyled to={'/'}>Home</LinkStyled>
       <LinkStyled to={'/color-to-painting'}>
         <ColorGeneratorButton>
-        Color Generator
+        Color To Art Generator
         </ColorGeneratorButton>
       </LinkStyled>
       <LangChanger/>
