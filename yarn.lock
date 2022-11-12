@@ -2264,46 +2264,22 @@
   resolved "https://registry.yarnpkg.com/@uiw/color-convert/-/color-convert-1.1.1.tgz#6dc15114f5047b2c6382195d2720d1db17137935"
   integrity sha512-lLuNBe6r1/hXzQi04YOnaOWJFgpbJgEuL+CYOfd03EBwo0r1aKVGlmhu6xhDATooKRx3CRWM+SgImy9Iebj/Tg==
 
-"@uiw/react-color-editable-input-hsla@^1.1.1":
+"@uiw/react-color-circle@^1.1.1":
   version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-color-editable-input-hsla/-/react-color-editable-input-hsla-1.1.1.tgz#e3d177f7e9a7845154c7dfc4e67e26dfba2a8304"
-  integrity sha512-HL9cOuhZhhEX9sEWdYdrgkvTLZyzZQkp5LsC1jo5TtLQfrqjZ9oA+9vJII6YSsDwXlvCP477NQRHRzRp0Q/Zkw==
+  resolved "https://registry.yarnpkg.com/@uiw/react-color-circle/-/react-color-circle-1.1.1.tgz#e7730d79b160153f9d4a4affe14ed9bb1d5f1591"
+  integrity sha512-tJN3kpWeClqF/b97TCklzouS61bhBCtTurOCv7zYC0l/C/kVI2TWiulP88+j9tqzgw8z08Cf89qziuG0sxh8kA==
   dependencies:
     "@babel/runtime" "~7.19.0"
     "@uiw/color-convert" "1.1.1"
-    "@uiw/react-color-editable-input-rgba" "1.1.1"
+    "@uiw/react-color-swatch" "1.1.1"
 
-"@uiw/react-color-editable-input-rgba@1.1.1":
+"@uiw/react-color-swatch@1.1.1":
   version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-color-editable-input-rgba/-/react-color-editable-input-rgba-1.1.1.tgz#b59724108218e55a9b610170bb168cfbbd7a842f"
-  integrity sha512-uxZ2Oi+mYn9TfLi3atcqLfu95QNv9JN/85mXQ5DjUE2Er4B6Wkx82FUhdhkfC75zfvwss3fd0edFYWXVnjKyVQ==
+  resolved "https://registry.yarnpkg.com/@uiw/react-color-swatch/-/react-color-swatch-1.1.1.tgz#0979bd572210148b214ad373e6088d155f05fc62"
+  integrity sha512-3j6HH9moKZDOV1ciYoQcL8RJz3Z/GtAOHk6u+aAPYkmQWDpHyoqnuwB4vy42rdl/h/2Db8OFMj21F6u7xw/vDA==
   dependencies:
     "@babel/runtime" "~7.19.0"
     "@uiw/color-convert" "1.1.1"
-    "@uiw/react-color-editable-input" "1.1.1"
-
-"@uiw/react-color-editable-input@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-color-editable-input/-/react-color-editable-input-1.1.1.tgz#e63612a180dd886443146ff24c3078e19b2de0e9"
-  integrity sha512-kixmKXuynsBmAY0v62jblEsNAIb+fNj+g7GdIlb+LZAiDTNLzw51TcW2bP5T/prxorZUHBjmmAIiT6QP3aeTlA==
-  dependencies:
-    "@babel/runtime" "~7.19.0"
-
-"@uiw/react-color-wheel@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-color-wheel/-/react-color-wheel-1.1.1.tgz#51a1a9160f715a74aa1ece162db5af48899c318a"
-  integrity sha512-E/sjUdbFsGCmljsjvg+suhEmROkV3OiBcm7g/TGfWW928cUhPySPAf7Qp9PZjWZ8zYnGA7hPPg3daFmjWKva0w==
-  dependencies:
-    "@babel/runtime" "~7.19.0"
-    "@uiw/color-convert" "1.1.1"
-    "@uiw/react-drag-event-interactive" "1.1.1"
-
-"@uiw/react-drag-event-interactive@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uiw/react-drag-event-interactive/-/react-drag-event-interactive-1.1.1.tgz#96c023fc63cf93126a33663c7b94ed85a8d707dc"
-  integrity sha512-vD/I7zzDJR6plZKRrgVimKhcpBBtJoTk8AjNi+qvGHu33pMg4/BwuGhTyk02EAzj8HtosZvTDnPcfgERNPGQDg==
-  dependencies:
-    "@babel/runtime" "~7.19.0"
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"

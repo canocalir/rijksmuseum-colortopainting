@@ -1,31 +1,43 @@
+import Circle from "@uiw/react-color-circle";
 import styled from "styled-components";
 
 const ColorContainer = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width:33rem;
+    justify-content: center;
+    flex-direction: column;
     gap: 2rem;
     padding: 1rem;
+    width: 40%;
+`
+
+const CircleColors = styled(Circle)`
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
 `
 
 const ColorHeading = styled.h2`
     font-size: 1.5rem;
     margin: 0;
     color: #f8c476;
+    text-align: center;
 `
 
 const ResultsContainer = styled.div`
     background-color: #eee;
     width: 33rem;
-    border-radius: 0.5rem;
+    height:40rem;
+    border-radius: 1rem;
+    overflow: scroll;
 `
 
 const MainPageContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
 `
 
-export {ColorContainer, ColorHeading, MainPageContainer, ResultsContainer}
+export {ColorContainer, ColorHeading, MainPageContainer, ResultsContainer, CircleColors}

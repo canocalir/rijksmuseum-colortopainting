@@ -1,9 +1,11 @@
 import { ResultCardContainer } from "./styled"
 
-const ResultCard = () => {
+const ResultCard = ({data}) => {
+  
   return (
     <ResultCardContainer>
-        ResultCard
+      <img width={'100px'} src={data?.webImage?.url} alt="" />
+        <h2>{data?.title}</h2>
     </ResultCardContainer>
   )
 }

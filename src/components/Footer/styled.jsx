@@ -7,9 +7,10 @@ const FooterContainer = styled.footer`
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  height: 3rem;
-  flex-wrap: wrap;
   color: #fff;
+  p{
+    text-align:center;
+  }
 `;
 
 const FooterLink = styled.a`
