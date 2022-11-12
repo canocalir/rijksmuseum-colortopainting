@@ -8,7 +8,7 @@ const LangChanger = () => {
   const handleLanguageChange = (e) => userLanguageChange(e.target.value);
 
   return (
-    <LangSelect onChange={handleLanguageChange} value={userLanguage}>
+    <LangSelect style={{width: '100px'}} onChange={handleLanguageChange} value={userLanguage}>
       {Object.entries(languageOptions).map(([id, name]) => (
         <option key={id} value={id}>{name}</option>
       ))}

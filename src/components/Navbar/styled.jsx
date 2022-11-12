@@ -42,6 +42,7 @@ const ColorGeneratorButton = styled.button`
   color: #fff;
   font-weight: 600;
   border: none;
+  font-size:0.9rem;
   &:hover {
     cursor: pointer;
     background-color: #f8a62c;

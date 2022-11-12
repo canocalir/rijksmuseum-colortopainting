@@ -15,6 +15,7 @@ const CircleColors = styled(Circle)`
     display: flex;
     justify-content: center;
     flex-wrap:wrap;
+    width: 100%;
 `
 
 const ColorHeading = styled.h2`
@@ -26,10 +27,18 @@ const ColorHeading = styled.h2`
 
 const ResultsContainer = styled.div`
     background-color: #eee;
-    width: 33rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
     height:40rem;
+    width: 40%;
+    padding: 3rem;
     border-radius: 1rem;
     overflow: scroll;
+    @media (max-width: 968px){
+        width: 90%;
+    }
+
 `
 
 const MainPageContainer = styled.div`

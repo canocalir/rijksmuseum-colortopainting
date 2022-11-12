@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FilterResults from "../components/FilterResults/FilterResults";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import ResultCard from "../components/ResultCard/ResultCard";
+import { LanguageContext } from "../context/LanguageContext";
 import {
   CircleColors,
   ColorContainer,
@@ -10,7 +11,6 @@ import {
   MainPageContainer,
   ResultsContainer,
 } from "./styled";
-import Circle from "@uiw/react-color-circle";
 
 const ColorToPainting = () => {
   const [data, setData] = useState([]);
@@ -40,18 +40,19 @@ const ColorToPainting = () => {
     "#FFEB00",
   ];
 
+  const {userLanguage} = useContext(LanguageContext)
+  console.log(userLanguage)
   const fetchColorFilteredPaintingsData = async () => {
-    const url = `https://www.rijksmuseum.nl/api/nl/collection?key=${process.env.REACT_APP_RIJKS_API_KEY}&ps=100&f.normalized32Colors.hex=%23${colorHex.toUpperCase().replace('#', '')}&st=Objects`;
+    const url = `https://www.rijksmuseum.nl/api/${userLanguage === 'en' ? 'en' : 'nl'}/collection?key=${process.env.REACT_APP_RIJKS_API_KEY}&ps=100&f.normalized32Colors.hex=%23${colorHex.toUpperCase().replace('#', '')}&st=Objects`;
     const res = await fetch(url);
     const data = await res.json();
     setData(data?.artObjects);
-    console.log(url)
   };
   console.log(data);
 
   useEffect(() => {
     fetchColorFilteredPaintingsData();
-  }, [colorHex]);
+  }, [colorHex, userLanguage]);
 
   return (
     <>

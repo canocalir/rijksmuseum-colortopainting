@@ -4,8 +4,8 @@ const ResultCard = ({data}) => {
   
   return (
     <ResultCardContainer>
-      <img width={'100px'} src={data?.webImage?.url} alt="" />
-        <h2>{data?.title}</h2>
+      <h3>{data?.title}</h3>
+      <img src={data?.webImage?.url} alt="" />
     </ResultCardContainer>
   )
 }
