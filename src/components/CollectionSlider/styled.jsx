@@ -6,7 +6,7 @@ const CollectionSliderContainer = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 70%;
+    height: 78%;
     padding-bottom: 4rem;
     
 `

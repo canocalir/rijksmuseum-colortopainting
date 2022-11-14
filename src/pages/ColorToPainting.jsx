@@ -10,6 +10,7 @@ import {
   ColorHeading,
   MainPageContainer,
   ResultsContainer,
+  UpperContainer,
 } from "./styled";
 
 const ColorToPainting = () => {
@@ -40,10 +41,16 @@ const ColorToPainting = () => {
     "#FFEB00",
   ];
 
-  const {userLanguage} = useContext(LanguageContext)
-  console.log(userLanguage)
+  const { userLanguage } = useContext(LanguageContext);
+  console.log(userLanguage);
   const fetchColorFilteredPaintingsData = async () => {
-    const url = `https://www.rijksmuseum.nl/api/${userLanguage === 'en' ? 'en' : 'nl'}/collection?key=${process.env.REACT_APP_RIJKS_API_KEY}&ps=100&f.normalized32Colors.hex=%23${colorHex.toUpperCase().replace('#', '')}&st=Objects`;
+    const url = `https://www.rijksmuseum.nl/api/${
+      userLanguage === "en" ? "en" : "nl"
+    }/collection?key=${
+      process.env.REACT_APP_RIJKS_API_KEY
+    }&ps=100&f.normalized32Colors.hex=%23${colorHex
+      .toUpperCase()
+      .replace("#", "")}&st=Objects`;
     const res = await fetch(url);
     const data = await res.json();
     setData(data?.artObjects);
@@ -58,23 +65,26 @@ const ColorToPainting = () => {
     <>
       <Navbar />
       <MainPageContainer>
-        <ColorContainer>
-          <ColorHeading>Search Collection Items By Color</ColorHeading>
-          <CircleColors
-            colors={colorArray}
-            color={colorHex}
-            onChange={(color) => {
-              setColorHex(color.hex);
-            }}
-          />
-        </ColorContainer>
-        {data.length > 1 && <ResultsContainer>
-          <FilterResults />
-          {data.map((painting, id) => {
-            return <ResultCard key={id} data={painting} />;
-          })}
-        </ResultsContainer>}
-          
+        <UpperContainer>
+          <ColorContainer>
+            <ColorHeading>Search Collection Items By Color</ColorHeading>
+            <CircleColors
+              colors={colorArray}
+              color={colorHex}
+              onChange={(color) => {
+                setColorHex(color.hex);
+              }}
+            />
+          </ColorContainer>
+          {data.length > 1 && <FilterResults data={data} setData={setData} />}
+        </UpperContainer>
+        {data.length > 1 && (
+          <ResultsContainer>
+            {data.map((painting, id) => {
+              return <ResultCard key={id} data={painting} />;
+            })}
+          </ResultsContainer>
+        )}
       </MainPageContainer>
       <Footer />
     </>
