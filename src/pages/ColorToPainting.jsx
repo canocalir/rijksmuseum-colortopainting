@@ -17,8 +17,8 @@ import {
 const ColorToPainting = () => {
   const [data, setData] = useState([]);
   const [colorHex, setColorHex] = useState("");
-  const [artistData, setArtistData] = useState([])
-  const [filteredData, setFilteredData] = useState([])
+  const [artistData, setArtistData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const colorArray = [
@@ -46,7 +46,7 @@ const ColorToPainting = () => {
   ];
 
   const { userLanguage, dictionary } = useContext(LanguageContext);
- 
+
   const fetchColorFilteredPaintingsData = async () => {
     setLoading(true);
     const url = `https://www.rijksmuseum.nl/api/${
@@ -59,12 +59,11 @@ const ColorToPainting = () => {
     const res = await fetch(url);
     const data = await res.json();
     setData(data?.artObjects);
-    setArtistData(data?.facets)
+    setArtistData(data?.facets);
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   };
-  
 
   useEffect(() => {
     fetchColorFilteredPaintingsData();
@@ -85,16 +84,30 @@ const ColorToPainting = () => {
               }}
             />
           </ColorContainer>
-          {data.length > 0 && !loading ? <FilterResults filteredData={filteredData} setFilteredData={setFilteredData} artistData={artistData} data={data} setData={setData} /> : null}
+          {data.length > 0 && !loading ? (
+            <FilterResults
+              filteredData={filteredData}
+              setFilteredData={setFilteredData}
+              artistData={artistData}
+              data={data}
+              setData={setData}
+            />
+          ) : null}
         </UpperContainer>
-        {loading && colorHex ? <Loader/> : data.length > 1 && (
-          <ResultsContainer>
-            {filteredData.length < 1 ? data.map((painting, id) => {
-              return <ResultCard key={id} data={painting} />;
-            }): filteredData.map((painting, id) => {
-              return <ResultCard key={id} data={painting} />;
-            })}
-          </ResultsContainer>
+        {loading && colorHex ? (
+          <Loader />
+        ) : (
+          data.length > 1 && (
+            <ResultsContainer>
+              {filteredData.length < 1
+                ? data.map((painting, id) => {
+                    return <ResultCard key={id} data={painting} />;
+                  })
+                : filteredData.map((painting, id) => {
+                    return <ResultCard key={id} data={painting} />;
+                  })}
+            </ResultsContainer>
+          )
         )}
       </MainPageContainer>
       <Footer />

@@ -2,19 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import {
   CardDescription,
+  Place,
+  PrincipalMaker,
   ResultCardButton,
   ResultCardContainer,
   ResultImage,
-  ResultLeftContainer,
-  ResultRightContainer,
+  ResultLowerContainer,
   ResultTitle,
+  ResultUpperContainer,
   TitleYearContainer,
   YearBadge,
 } from "./styled";
+import Loader from '../Loader/Loader'
 
 const ResultCard = ({ data }) => {
   const [details, setDetails] = useState([]);
-  
 
   const { userLanguage, dictionary } = useContext(LanguageContext);
   const fetchDetailsData = async () => {
@@ -26,11 +28,10 @@ const ResultCard = ({ data }) => {
     const res = await fetch(url);
     const dataDetails = await res.json();
     setDetails(dataDetails?.artObject);
-    
   };
-
-  const { dating, description } = details;
-  const { title, links, webImage } = data;
+console.log(data)
+  const { dating, productionPlaces } = details;
+  const { links, webImage, principalOrFirstMaker } = data;
   useEffect(() => {
     fetchDetailsData();
   }, [userLanguage]);
@@ -39,19 +40,25 @@ const ResultCard = ({ data }) => {
     <>
       {
         <ResultCardContainer>
-          <ResultLeftContainer>
-            <ResultImage loading={"lazy"} src={webImage?.url} alt="" />
-          </ResultLeftContainer>
-          <ResultRightContainer>
+          <ResultUpperContainer>
+            <ResultImage loading={'lazy'} src={webImage?.url} alt="" />
+          </ResultUpperContainer>
+          <ResultLowerContainer>
             <TitleYearContainer>
-              <ResultTitle>{title}</ResultTitle>
+              <ResultTitle>{details?.label?.title}</ResultTitle>
+              <div style={{textAlign: 'center'}}>
               <YearBadge>{dating?.sortingDate}</YearBadge>
+              <Place>{productionPlaces ? productionPlaces[0] : 'No data'}</Place>
+              </div>
             </TitleYearContainer>
-            <CardDescription>{description}</CardDescription>
+            <PrincipalMaker>{principalOrFirstMaker}</PrincipalMaker>
+            <CardDescription>{!details?.label?.description ? <Loader/> : details?.label?.description}</CardDescription>
             <a href={links?.web}>
-              <ResultCardButton>{dictionary.moreDetailsButton}</ResultCardButton>
+              <ResultCardButton>
+                {dictionary.moreDetailsButton}
+              </ResultCardButton>
             </a>
-          </ResultRightContainer>
+          </ResultLowerContainer>
         </ResultCardContainer>
       }
     </>
