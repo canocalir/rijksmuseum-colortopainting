@@ -29,12 +29,12 @@ const ResultCard = ({ data }) => {
     const dataDetails = await res.json();
     setDetails(dataDetails?.artObject);
   };
-console.log(data)
+
   const { dating, productionPlaces } = details;
   const { links, webImage, principalOrFirstMaker } = data;
   useEffect(() => {
     fetchDetailsData();
-  }, [userLanguage]);
+  }, [userLanguage]); // eslint-disable-line 
 
   return (
     <>

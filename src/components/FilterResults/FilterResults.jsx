@@ -22,7 +22,7 @@ const FilterResults = ({
 
   useEffect(() => {
     filterDataHandler();
-  }, [filters]);
+  }, [filters]); // eslint-disable-line 
 
   const filterDataHandler = () => {
     setFilteredData(

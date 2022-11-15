@@ -67,7 +67,7 @@ const ColorToPainting = () => {
 
   useEffect(() => {
     fetchColorFilteredPaintingsData();
-  }, [colorHex, userLanguage]);
+  }, [colorHex, userLanguage]); // eslint-disable-line 
 
   return (
     <>
