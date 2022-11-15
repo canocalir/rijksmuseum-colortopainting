@@ -30,10 +30,9 @@ const CollectionSlider = () => {
       cancelOnInteraction={false}
       interval={4000}
       animation="foldOutAnimation"
-      cssModule={[CoreStyles, AnimationStyles]}
-    >
+      cssModule={[CoreStyles, AnimationStyles]}>
       {data?.map((img, index) => (
-        <div key={index} data-src={img.webImage.url + "?.jpg"} />
+        <div style={{height: '100vh'}} key={index} data-src={img.webImage.url + "?.jpg"} />
       ))}
     </AutoplaySlider>
   );

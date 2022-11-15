@@ -16,6 +16,7 @@ import {
 const ColorToPainting = () => {
   const [data, setData] = useState([]);
   const [colorHex, setColorHex] = useState("");
+  const [artistData, setArtistData] = useState([])
 
   const colorArray = [
     "#737C84",
@@ -54,8 +55,9 @@ const ColorToPainting = () => {
     const res = await fetch(url);
     const data = await res.json();
     setData(data?.artObjects);
+    setArtistData(data?.facets)
   };
-  console.log(data);
+  console.log(artistData);
 
   useEffect(() => {
     fetchColorFilteredPaintingsData();
@@ -76,7 +78,7 @@ const ColorToPainting = () => {
               }}
             />
           </ColorContainer>
-          {data.length > 1 && <FilterResults data={data} setData={setData} />}
+          {data.length > 1 && <FilterResults artistData={artistData} data={data} setData={setData} />}
         </UpperContainer>
         {data.length > 1 && (
           <ResultsContainer>

@@ -13,7 +13,7 @@ import {
 } from "./styled";
 
 const ResultCard = ({ data }) => {
-  console.log(data);
+  
   const [details, setDetails] = useState([]);
 
   const { userLanguage } = useContext(LanguageContext);
@@ -35,7 +35,6 @@ const ResultCard = ({ data }) => {
   }, [userLanguage]);
   
   
-  console.log(links);
   return (
     <ResultCardContainer>
       <ResultLeftContainer>
