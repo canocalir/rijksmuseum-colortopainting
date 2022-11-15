@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import FilterResults from "../components/FilterResults/FilterResults";
 import Footer from "../components/Footer/Footer";
+import Loader from "../components/Loader/Loader";
 import Navbar from "../components/Navbar/Navbar";
 import ResultCard from "../components/ResultCard/ResultCard";
 import { LanguageContext } from "../context/LanguageContext";
@@ -17,6 +18,8 @@ const ColorToPainting = () => {
   const [data, setData] = useState([]);
   const [colorHex, setColorHex] = useState("");
   const [artistData, setArtistData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
+  const [loading, setLoading] = useState(false);
 
   const colorArray = [
     "#737C84",
@@ -42,22 +45,26 @@ const ColorToPainting = () => {
     "#FFEB00",
   ];
 
-  const { userLanguage } = useContext(LanguageContext);
-  console.log(userLanguage);
+  const { userLanguage, dictionary } = useContext(LanguageContext);
+ 
   const fetchColorFilteredPaintingsData = async () => {
+    setLoading(true);
     const url = `https://www.rijksmuseum.nl/api/${
       userLanguage === "en" ? "en" : "nl"
     }/collection?key=${
       process.env.REACT_APP_RIJKS_API_KEY
     }&ps=100&f.normalized32Colors.hex=%23${colorHex
       .toUpperCase()
-      .replace("#", "")}&st=Objects`;
+      .replace("#", "")}`;
     const res = await fetch(url);
     const data = await res.json();
     setData(data?.artObjects);
     setArtistData(data?.facets)
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
-  console.log(artistData);
+  
 
   useEffect(() => {
     fetchColorFilteredPaintingsData();
@@ -69,7 +76,7 @@ const ColorToPainting = () => {
       <MainPageContainer>
         <UpperContainer>
           <ColorContainer>
-            <ColorHeading>Search Collection Items By Color</ColorHeading>
+            <ColorHeading>{dictionary.colorHeading}</ColorHeading>
             <CircleColors
               colors={colorArray}
               color={colorHex}
@@ -78,11 +85,13 @@ const ColorToPainting = () => {
               }}
             />
           </ColorContainer>
-          {data.length > 1 && <FilterResults artistData={artistData} data={data} setData={setData} />}
+          {data.length > 0 && !loading ? <FilterResults filteredData={filteredData} setFilteredData={setFilteredData} artistData={artistData} data={data} setData={setData} /> : null}
         </UpperContainer>
-        {data.length > 1 && (
+        {loading && colorHex ? <Loader/> : data.length > 1 && (
           <ResultsContainer>
-            {data.map((painting, id) => {
+            {filteredData.length < 1 ? data.map((painting, id) => {
+              return <ResultCard key={id} data={painting} />;
+            }): filteredData.map((painting, id) => {
               return <ResultCard key={id} data={painting} />;
             })}
           </ResultsContainer>

@@ -7,10 +7,11 @@ const LinkStyled = styled(Link)`
 `;
 
 const LangSelect = styled.select`
-  width: 5rem;
   height: 2.2rem;
   border-radius: 0.5rem;
   font-weight: 600;
+  width: 7rem !important;
+  border: none;
 `;
 
 const MainContainer = styled.div`

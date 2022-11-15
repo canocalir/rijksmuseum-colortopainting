@@ -4,6 +4,6 @@ import nl from './nl.json';
 export const dictionaryList = { en, nl };
 
 export const languageOptions = {
-  en: 'English',
-  nl: 'Netherlands'
+  en: '🇬🇧 English',
+  nl: '🇳🇱 Nederland'
 };

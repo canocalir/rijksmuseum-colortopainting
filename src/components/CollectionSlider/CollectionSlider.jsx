@@ -17,7 +17,6 @@ const CollectionSlider = () => {
     const data = await res.json();
     setData(data.artObjects);
   };
-  console.log(data);
 
   useEffect(() => {
     fetchCollectionImages();
