@@ -49,10 +49,8 @@ const ColorToPainting = () => {
 
   const fetchColorFilteredPaintingsData = async () => {
     setLoading(true);
-    const url = `https://www.rijksmuseum.nl/api/${
-      userLanguage === "en" ? "en" : "nl"
-    }/collection?key=${
-      process.env.REACT_APP_RIJKS_API_KEY
+    const url = `/${userLanguage === "en" ? "en" : "nl"
+    }/collection?key=${process.env.REACT_APP_RIJKS_API_KEY
     }&ps=100&f.normalized32Colors.hex=%23${colorHex
       .toUpperCase()
       .replace("#", "")}`;

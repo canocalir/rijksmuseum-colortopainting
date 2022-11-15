@@ -16,7 +16,7 @@ const ResultCardContainer = styled.div`
   }
 `;
 
-const CardDescription = styled.p`
+const CardDescription = styled.div`
   font-size: 0.8rem;
   padding: 1rem;
   font-family: Inter, system-ui, sans-serif;
