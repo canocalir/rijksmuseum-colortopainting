@@ -13,12 +13,7 @@ const CollectionSlider = () => {
 
   const fetchCollectionImages = async () => {
     const url = `https://www.rijksmuseum.nl/api/en/collection?key=${process.env.REACT_APP_RIJKS_API_KEY}&involvedMaker=Rembrandt+van+Rijn&p=4`;
-    const res = await fetch(url,{
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }});
+    const res = await fetch(url);
     const data = await res.json();
     setData(data?.artObjects);
   };

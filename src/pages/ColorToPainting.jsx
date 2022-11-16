@@ -54,12 +54,7 @@ const ColorToPainting = () => {
     }&ps=100&f.normalized32Colors.hex=%23${colorHex
       .toUpperCase()
       .replace("#", "")}`;
-    const res = await fetch(url,{
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }})
+    const res = await fetch(url)
     const data = await res.json()
     setData(data?.artObjects)
     setArtistData(data?.facets)
