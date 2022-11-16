@@ -10,6 +10,9 @@ const NavbarContainer = styled.div`
   background-color: #40474f;
   padding: 1.5rem 0 1.5rem 0;
   gap: 2rem;
+  @media (max-width: 968px) {
+    width: 100%;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -47,6 +50,9 @@ const ColorGeneratorButton = styled.button`
     cursor: pointer;
     background-color: #f8a62c;
     transition: 200ms ease-in;
+  }
+  @media (max-width: 968px) {
+    width: 7rem;
   }
 `;
 

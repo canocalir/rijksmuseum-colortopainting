@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import {
   CardDescription,
+  DescriptionButton,
   Place,
   PrincipalMaker,
   ResultCardButton,
@@ -17,23 +18,23 @@ import Loader from '../Loader/Loader'
 
 const ResultCard = ({ data }) => {
   const [details, setDetails] = useState([]);
+  const [isOpen, setIsOpen] = useState(false)
 
   const { userLanguage, dictionary } = useContext(LanguageContext);
-  const fetchDetailsData = async () => {
+  const fetchDetailsData = () => {
     const url = `${process.env.REACT_APP_RIJKS_BASE_URL}/${userLanguage === "en" ? "en" : "nl"
-    }/collection/${data?.objectNumber}?key=${
-      process.env.REACT_APP_RIJKS_API_KEY
-    }`;
-    const res = await fetch(url);
-    const dataDetails = await res.json();
-    setDetails(dataDetails?.artObject);
-  };
+    }/collection/${data?.objectNumber}?key=${process.env.REACT_APP_RIJKS_API_KEY}`;
+    fetch(url)
+    .then((res) => res.json())
+    .then((dataDetails) => setDetails(dataDetails?.artObject))
+  }
 
   const { dating, productionPlaces } = details;
   const { links, webImage, principalOrFirstMaker } = data;
+
   useEffect(() => {
     fetchDetailsData();
-  }, [userLanguage]); // eslint-disable-line 
+  }, [isOpen, data]); // eslint-disable-line 
 
   return (
     <>
@@ -44,14 +45,15 @@ const ResultCard = ({ data }) => {
           </ResultUpperContainer>
           <ResultLowerContainer>
             <TitleYearContainer>
-              <ResultTitle>{details?.label?.title}</ResultTitle>
+              <ResultTitle>{data?.title}</ResultTitle>
               <div style={{textAlign: 'center'}}>
               <YearBadge>{dating?.sortingDate}</YearBadge>
               <Place>{productionPlaces ? productionPlaces[0] : 'No data'}</Place>
               </div>
             </TitleYearContainer>
             <PrincipalMaker>{principalOrFirstMaker}</PrincipalMaker>
-            <CardDescription>{!details?.label?.description ? <Loader/> : details?.label?.description}</CardDescription>
+            <DescriptionButton onClick={() => setIsOpen(current => !current)}>{!isOpen ? 'Click to Open Description' : 'Click to Close Description'}</DescriptionButton>
+            {isOpen ? <CardDescription>{details?.label?.description}</CardDescription> : null}
             <a href={links?.web}>
               <ResultCardButton>
                 {dictionary.moreDetailsButton}

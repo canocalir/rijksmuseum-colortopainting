@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { SelectBoxArtist, SelectBoxPlace } from "./styled";
+import { EmptyWhiteSpace, FilterAreaContainer, SelectBoxArtist, SelectBoxPlace } from "./styled";
 import {LanguageContext} from '../../context/LanguageContext'
 const FilterResults = ({
   artistData,
@@ -36,7 +36,7 @@ const FilterResults = ({
   };
 
   return (
-    <div>
+    <FilterAreaContainer>
       <SelectBoxArtist
         onChange={filterSetHandler}
         placeholder="select"
@@ -52,6 +52,7 @@ const FilterResults = ({
           </option>
         ))}
       </SelectBoxArtist>
+      <EmptyWhiteSpace></EmptyWhiteSpace>
       <SelectBoxPlace onChange={filterSetHandler} name="places" id="places">
         <option defaultValue={"all"} value="all">
         {dictionary.filterAll}
@@ -62,7 +63,7 @@ const FilterResults = ({
           </option>
         ))}
       </SelectBoxPlace>
-    </div>
+    </FilterAreaContainer>
   );
 };
 

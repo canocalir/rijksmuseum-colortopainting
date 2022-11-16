@@ -24,7 +24,6 @@ const CardDescription = styled.div`
   font-size: 14px;
   letter-spacing: 0.4px;
   overflow: hidden;
-  height: 30rem;
   overflow: auto;
   margin: 0;
 `;
@@ -44,7 +43,7 @@ const TitleYearContainer = styled.div`
 
 const ResultCardButton = styled.button`
   width: 100%;
-  background-color: #f8a62c;
+  background-color: #003DA5;
   color: #fff;
   height: 2.2rem;
   margin-bottom: 1rem;
@@ -64,11 +63,10 @@ const ResultCardButton = styled.button`
 
 const ResultTitle = styled.h3`
   font-size: 1rem;
-  width: 60%;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
   font-family: "Roboto Mono", system-ui, sans-serif;
-  word-spacing: -5px;
   text-transform: none;
   margin: 0;
 `;
@@ -76,14 +74,14 @@ const ResultTitle = styled.h3`
 const YearBadge = styled.div`
   font-size: 1.7rem;
   font-weight: 600;
-  color: #cfa83a;
+  color: #C8102E;
 `;
 
 const ResultLowerContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 20rem;
+  height: fit-content;
   background-color: #fff;
 `;
 
@@ -103,6 +101,25 @@ const ResultUpperContainer = styled.div`
   overflow: hidden;
   border-radius: 1rem;
 `;
+
+const DescriptionButton = styled.button`
+  border:none;
+  background-color:  #fff;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  margin-top: 1rem;
+  color: #003DA5;
+  font-weight: 600;
+  outline: #003DA5 1px solid;
+  cursor: pointer;
+  &:hover{
+    transition: 200ms ease-in;
+    background-color: #fff;
+    outline: 1px solid #C8102E;
+    color: #C8102E;
+    cursor: pointer;
+  }
+`
 
 const PrincipalMaker = styled.h3`
   font-family: "Roboto Mono", system-ui, sans-serif;
@@ -125,5 +142,6 @@ export {
   ResultTitle,
   ResultImage,
   PrincipalMaker,
-  Place
+  Place,
+  DescriptionButton
 };
