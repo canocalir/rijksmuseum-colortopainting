@@ -15,10 +15,10 @@ const CollectionSlider = () => {
     const url = `${process.env.REACT_APP_RIJKS_BASE_URL}/en/collection?key=${process.env.REACT_APP_RIJKS_API_KEY}&involvedMaker=Rembrandt+van+Rijn&p=4`;
     const res = await fetch(url,{
       headers: {
-        Accept: "application/json",
-        mode: "no-cors"
-      },
-    });
+        "Access-Control-Allow-Origin": "*",
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }});
     const data = await res.json();
     setData(data?.artObjects);
   };
