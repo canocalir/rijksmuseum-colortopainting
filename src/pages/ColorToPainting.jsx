@@ -41,8 +41,7 @@ const ColorToPainting = () => {
     "#8268DC",
     "#850085",
     "#DDA5AA",
-    "#DF4C93",
-    "#FFEB00",
+    "#DF4C93"
   ];
 
   const { userLanguage, dictionary } = useContext(LanguageContext);
