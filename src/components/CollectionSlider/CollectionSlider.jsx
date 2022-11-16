@@ -35,7 +35,7 @@ const CollectionSlider = () => {
         <div
           style={{ height: "100vh" }}
           key={index}
-          data-src={img.webImage.url + "?.jpg"}
+          data-src={img?.webImage?.url + "?.jpg"}
         />
       ))}
     </AutoplaySlider>
