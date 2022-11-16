@@ -49,7 +49,7 @@ const ColorToPainting = () => {
 
   const fetchColorFilteredPaintingsData = async () => {
     setLoading(true);
-    const url = `${process.env.REACT_APP_RIJKS_BASE_URL}/${userLanguage === "en" ? "en" : "nl"
+    const url = `/${userLanguage === "en" ? "en" : "nl"
     }/collection?key=${process.env.REACT_APP_RIJKS_API_KEY
     }&ps=100&f.normalized32Colors.hex=%23${colorHex
       .toUpperCase()

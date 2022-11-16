@@ -12,7 +12,7 @@ const CollectionSlider = () => {
   const AutoplaySlider = withAutoplay(AwesomeSlider);
 
   const fetchCollectionImages = async () => {
-    const url = `${process.env.REACT_APP_RIJKS_BASE_URL}/en/collection?key=${process.env.REACT_APP_RIJKS_API_KEY}&involvedMaker=Rembrandt+van+Rijn&p=4`;
+    const url = `/en/collection?key=${process.env.REACT_APP_RIJKS_API_KEY}&involvedMaker=Rembrandt+van+Rijn&p=4`;
     const res = await fetch(url,{
       headers: {
         "Access-Control-Allow-Origin": "*",
