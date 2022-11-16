@@ -21,12 +21,12 @@ const ResultCard = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const { userLanguage, dictionary } = useContext(LanguageContext);
-  const fetchDetailsData = () => {
+  const fetchDetailsData = async () => {
     const url = `${process.env.REACT_APP_RIJKS_BASE_URL}/${userLanguage === "en" ? "en" : "nl"
     }/collection/${data?.objectNumber}?key=${process.env.REACT_APP_RIJKS_API_KEY}`;
-    fetch(url)
-    .then((res) => res.json())
-    .then((dataDetails) => setDetails(dataDetails?.artObject))
+    const res = await fetch(url)
+    const dataDetails = await res.json()
+    setDetails(dataDetails?.artObject)
   }
 
   const { dating, productionPlaces } = details;
@@ -52,8 +52,8 @@ const ResultCard = ({ data }) => {
               </div>
             </TitleYearContainer>
             <PrincipalMaker>{principalOrFirstMaker}</PrincipalMaker>
-            <DescriptionButton onClick={() => setIsOpen(current => !current)}>{!isOpen ? 'Click to Open Description' : 'Click to Close Description'}</DescriptionButton>
-            {isOpen ? <CardDescription>{details?.label?.description}</CardDescription> : null}
+            <DescriptionButton onClick={() => setIsOpen(current => !current)}>{!isOpen ? dictionary.descriptionButtonClose : dictionary.descriptionButtonOpen}</DescriptionButton>
+            {isOpen ? <CardDescription>{details?.label?.description ? details?.label?.description : <Loader/>}</CardDescription> : null}
             <a href={links?.web}>
               <ResultCardButton>
                 {dictionary.moreDetailsButton}

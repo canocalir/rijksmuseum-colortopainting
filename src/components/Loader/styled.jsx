@@ -20,6 +20,5 @@ const LoadingIcon = styled.div`
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-}
 `
 export {LoadingIcon}

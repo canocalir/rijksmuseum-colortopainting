@@ -47,21 +47,17 @@ const ColorToPainting = () => {
 
   const { userLanguage, dictionary } = useContext(LanguageContext);
 
-  const fetchColorFilteredPaintingsData = () => {
+  const fetchColorFilteredPaintingsData = async () => {
     setLoading(true);
     const url = `${process.env.REACT_APP_RIJKS_BASE_URL}/${userLanguage === "en" ? "en" : "nl"
     }/collection?key=${process.env.REACT_APP_RIJKS_API_KEY
     }&ps=100&f.normalized32Colors.hex=%23${colorHex
       .toUpperCase()
       .replace("#", "")}`;
-    fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      return(
-        setData(data?.artObjects),
-        setArtistData(data?.facets)
-      )
-    })
+    const res = await fetch(url)
+    const data = await res.json()
+    setData(data?.artObjects)
+    setArtistData(data?.facets)
     setTimeout(() => {
       setLoading(false);
     }, 1000);
