@@ -22,7 +22,7 @@ const ResultCard = ({ data }) => {
 
   const { userLanguage, dictionary } = useContext(LanguageContext);
   const fetchDetailsData = async () => {
-    const url = `/${userLanguage === "en" ? "en" : "nl"
+    const url = `https://www.rijksmuseum.nl/api/${userLanguage === "en" ? "en" : "nl"
     }/collection/${data?.objectNumber}?key=${process.env.REACT_APP_RIJKS_API_KEY}&ps=1`;
     const res = await fetch(url,{
       headers: {
