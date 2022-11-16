@@ -49,23 +49,30 @@ const ColorToPainting = () => {
 
   const fetchColorFilteredPaintingsData = async () => {
     setLoading(true);
-    const url = `https://www.rijksmuseum.nl/api/${userLanguage === "en" ? "en" : "nl"
-    }/collection?key=${process.env.REACT_APP_RIJKS_API_KEY
-    }&ps=100&f.normalized32Colors.hex=%23${colorHex
-      .toUpperCase()
-      .replace("#", "")}`;
-    const res = await fetch(url)
-    const data = await res.json()
-    setData(data?.artObjects)
-    setArtistData(data?.facets)
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    try {
+      const url = `https://www.rijksmuseum.nl/api/${
+        userLanguage === "en" ? "en" : "nl"
+      }/collection?key=${
+        process.env.REACT_APP_RIJKS_API_KEY
+      }&ps=100&f.normalized32Colors.hex=%23${colorHex
+        .toUpperCase()
+        .replace("#", "")}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      setData(data?.artObjects);
+      setArtistData(data?.facets);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
   };
 
   useEffect(() => {
     fetchColorFilteredPaintingsData();
-  }, [colorHex, userLanguage]); // eslint-disable-line 
+  }, [colorHex, userLanguage]); // eslint-disable-line
 
   return (
     <>

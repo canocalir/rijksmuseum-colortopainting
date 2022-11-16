@@ -8,5 +8,6 @@
     "filterAll": "All",
     "footerText": "Made with ❤️ by Can Ocalir | All Data Belongs to",
     "descriptionButtonOpen": "Click to Close Description",
-    "descriptionButtonClose": "Click to Open Description"
+    "descriptionButtonClose": "Click to Open Description",
+    "noData": "No Data"
   }
