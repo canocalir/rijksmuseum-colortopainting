@@ -14,7 +14,6 @@ import {
   TitleYearContainer,
   YearBadge,
 } from "./styled";
-import Loader from "../Loader/Loader";
 
 const ResultCard = ({ data }) => {
   const [details, setDetails] = useState([]);
@@ -47,7 +46,7 @@ const ResultCard = ({ data }) => {
 
   useEffect(() => {
     fetchDetailsData();
-  }, []);
+  }, []); // eslint-disable-line
   return (
     <>
       {
