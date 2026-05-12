@@ -49,13 +49,7 @@ const ColorToPainting = () => {
   const fetchColorFilteredPaintingsData = async () => {
     setLoading(true);
     try {
-      const url = `https://www.rijksmuseum.nl/api/${
-        userLanguage === "en" ? "en" : "nl"
-      }/collection?key=${
-        process.env.REACT_APP_RIJKS_API_KEY
-      }&ps=100&f.normalized32Colors.hex=%23${colorHex
-        .toUpperCase()
-        .replace("#", "")}`;
+      const url = `/.netlify/functions/rijksAPI?language=${userLanguage}&colorHex=${colorHex}`;
       const res = await fetch(url);
       const data = await res.json();
       setData(data?.artObjects);
